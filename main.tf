@@ -1,9 +1,5 @@
-resource "null_resource" "provision-builder" {
-  triggers = {
-    dir_sha1    = sha1(join("", [for f in fileset(.hack, "hack/**") : filesha1(f)]))
-  }
-
-  provisioner "local-exec" {
-    command = "echo Touché"
-  }
+module "hack" {
+  source  = "./hach/ibm//main.tf"
+  version = "1.3.4"
+  # insert the 7 required variables here
 }
