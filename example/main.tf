@@ -1,6 +1,32 @@
 module "vpc" {
  source = "../hack"
 }
+ resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
 resource "aws_iam_service_linked_role" "es" {
   aws_service_name = "es.amazonaws.com"
 }
@@ -27,7 +53,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
   subnet_ids = [
      aws_subnet.conductor_private_subnet.id
    ]
-   security_group_ids = [""]
+   security_group_ids = [aws_security_group.allow_tls.id]
 
  }
    domain_endpoint_options {
