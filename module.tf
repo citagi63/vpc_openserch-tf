@@ -1,7 +1,7 @@
 module "hack" {
-  source = "file:///hack"
+  source = "./hack/"
 }
 
 module "example" {
-  source = "file:///example"
+  source = "./example/"
 }
