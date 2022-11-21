@@ -1,3 +1,1 @@
-module "example" {
-  source = "./example/"
-  }
+#############
