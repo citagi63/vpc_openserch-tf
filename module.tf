@@ -1,7 +1,7 @@
 module "hack" {
-  source = "terraform/hack"
+  source = "/hack"
 }
 
 module "example" {
-  source = "terraform/example"
+  source = "/example"
 }
