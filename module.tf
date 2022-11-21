@@ -1,7 +1,7 @@
-module "frontend" {
+module "hack" {
   source = "terraform/hack"
 }
 
-module "backend-1" {
+module "example" {
   source = "terraform/example"
 }
