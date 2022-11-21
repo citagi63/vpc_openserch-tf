@@ -1,5 +1,5 @@
 
 
-module "example" {
+module "hack" {
   source = "./hack/"
 }
