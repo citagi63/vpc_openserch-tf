@@ -1,5 +1,0 @@
-
-
-module "hack" {
-  source = "./hack/"
-}
