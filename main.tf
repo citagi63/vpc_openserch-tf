@@ -1,5 +1,5 @@
 module "hack" {
   source  = "./hack/main.tf"
-  version = "1.3.4"
+  version = "1.1.0"
   # insert the 7 required variables here
 }
